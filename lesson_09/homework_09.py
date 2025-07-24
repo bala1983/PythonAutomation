@@ -91,5 +91,14 @@ class SumTest(unittest.TestCase):
         print(f"Actual result: {actual_result}", f"Expected result: {expected_result}")
         self.assertEqual(expected_result, actual_result)
 
+
+    def test_sum_all_negative_negative_none_input(self):
+        input_data = []
+        actual_result = sum_all_numbers(input_data)
+        expected_result = []
+        print(f"Input data: {input_data}")
+        print(f"Actual result: {actual_result}", f"Expected result: {expected_result}")
+        self.assertEqual(expected_result, actual_result)
+
 if __name__ == "__main__":
     unittest.main()
