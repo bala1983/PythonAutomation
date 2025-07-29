@@ -1,6 +1,6 @@
 import pytest
 
-from PythonAutomation.lesson_10.def_change_letters import change_letter
+from PythonAutomation.dop_lesson.def_change_letters import change_letter
 
 
 class TestChangeLetters:
@@ -31,3 +31,4 @@ class TestChangeLetters:
         actual_result = change_letter(input_data)
         expected_result = '-10292682681'
         assert actual_result == expected_result
+
