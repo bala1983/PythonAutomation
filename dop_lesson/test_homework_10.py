@@ -3,7 +3,7 @@ import pytest
 from PythonAutomation.dop_lesson.def_change_letters import change_letter
 
 
-class TestChangeLetters:
+class TestChangeLettersPositive:
     def test_one_word(self):
         input_data = "hello"
         actual_result = change_letter(input_data)
@@ -16,6 +16,8 @@ class TestChangeLetters:
         expected_result = 'WoUlD yOu tElL mE, pLeAsE, wHiCh wAy i oUgHt tO gO fRoM hErE?'
         assert actual_result == expected_result
 
+
+class TestChangeLettersNegative:
     def test_empty_sentence(self):
         input_data = ''
         actual_result = change_letter(input_data)
