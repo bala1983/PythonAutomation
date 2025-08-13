@@ -20,7 +20,3 @@ class Student:
 
 student = Student(name='Oleg', surname='Mishko', age=25)
 student.set_avarage_score(99.8)
-
-
-
-
