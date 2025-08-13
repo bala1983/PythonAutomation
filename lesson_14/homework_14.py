@@ -6,7 +6,6 @@ import self
 
 
 class Student:
-    class_name = 'Student'
 
     def __init__(self, name, surname, age):
         self.name = name
