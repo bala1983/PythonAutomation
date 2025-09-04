@@ -1,5 +1,4 @@
 import functools
-<<<<<<< HEAD
 import logging
 
 logging.basicConfig(
@@ -9,21 +8,14 @@ logging.basicConfig(
     encoding="utf-8"
 )
 logger = logging.getLogger('log')
-=======
->>>>>>> 277e30875a738b6fae6b836829470be4101994b3
+
 
 def log(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-<<<<<<< HEAD
         logger.info(f"Виклик: {func.__name__} з аргументами {args}, {kwargs}")
         result = func(*args, **kwargs)
         logger.info(f"Результат: {result}")
-=======
-        print(f"Виклик: {func.__name__} з аргументами {args}, {kwargs}")
-        result = func(*args, **kwargs)
-        print(f"Результат: {result}")
->>>>>>> 277e30875a738b6fae6b836829470be4101994b3
         return result
     return wrapper
 
