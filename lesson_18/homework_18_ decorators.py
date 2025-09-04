@@ -1,11 +1,20 @@
 import functools
+import logging
+
+logging.basicConfig(
+    filename='log.log',
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    encoding="utf-8"
+)
+logger = logging.getLogger('log')
 
 def log(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print(f"Виклик: {func.__name__} з аргументами {args}, {kwargs}")
+        logger.info(f"Виклик: {func.__name__} з аргументами {args}, {kwargs}")
         result = func(*args, **kwargs)
-        print(f"Результат: {result}")
+        logger.info(f"Результат: {result}")
         return result
     return wrapper
 
