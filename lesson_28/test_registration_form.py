@@ -1,7 +1,9 @@
 from faker import Faker
 import pytest
+import allure
 
-
+@allure.feature("Позитивні")
+@pytest.mark.positive
 def test_happy_pass_registration(driver, main_page):
     user_faker = Faker()
     registration_form = main_page.open_registration_form()
@@ -10,6 +12,8 @@ def test_happy_pass_registration(driver, main_page):
 
     assert garage_page.is_garage_page_visible()
 
+@allure.feature("Негативні")
+@pytest.mark.negative
 @pytest.mark.parametrize(
     "name, last_name, email, password, repeat_password, expected_error",
     [
