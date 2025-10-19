@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from PythonAutomation.lesson_28.garage_page import GaragePage
+import allure
 
 
 class RegistrationForm:
@@ -16,6 +17,7 @@ class RegistrationForm:
     def __init__(self, driver):
         self.driver = driver
 
+    @allure.step("Зареєструвати валідного користувача: {name} {last_name}, {email}")
     def register_valid_user(self, name, last_name, email, password):
         self._input_field(self._input_firs_name_locator).send_keys(name)
         self._input_field(self._input_last_name_locator).send_keys(last_name)
@@ -34,6 +36,7 @@ class RegistrationForm:
         return WebDriverWait(self.driver, timeout=5).until(
             EC.presence_of_element_located(locator))
 
+    @allure.step("Зареєструвати невалідного користувача: {name} {last_name}, {email}")
     def register_invalid_user(self, name, last_name, email, password, repeat_password):
         self._input_field(self._input_firs_name_locator).send_keys(name)
         self._input_field(self._input_last_name_locator).send_keys(last_name)
@@ -46,6 +49,7 @@ class RegistrationForm:
 
         return self
 
+    @allure.step("Перевірити, що відображається повідомлення про помилку: '{expected_error}'")
     def is_error_visible(self, expected_error, timeout=5):
         WebDriverWait(self.driver, timeout).until(
             EC.visibility_of_element_located(

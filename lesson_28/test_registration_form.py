@@ -2,17 +2,21 @@ from faker import Faker
 import pytest
 import allure
 
-@allure.feature("Позитивні")
+@allure.feature("Позитивний сценарій реєстрації")
+@allure.title("Реєстрація валідного користувача")
+@allure.description("Перевіряє, що користувач може успішно зареєструватися з коректними даними.")
 @pytest.mark.positive
 def test_happy_pass_registration(driver, main_page):
     user_faker = Faker()
+
     registration_form = main_page.open_registration_form()
     garage_page = registration_form.register_valid_user(user_faker.first_name(), user_faker.last_name(), user_faker.email(),
                                           user_faker.password())
-
     assert garage_page.is_garage_page_visible()
 
-@allure.feature("Негативні")
+@allure.feature("Негативні сценарії реєстрації")
+@allure.title("Валідація помилкових даних під час реєстрації")
+@allure.description("Перевіряє, що при введенні некоректних даних відображається правильне повідомлення про помилку.")
 @pytest.mark.negative
 @pytest.mark.parametrize(
     "name, last_name, email, password, repeat_password, expected_error",
@@ -36,5 +40,4 @@ def test_happy_pass_registration(driver, main_page):
 def test_registration_invalid_user(driver, main_page, name, last_name, email, password, repeat_password, expected_error):
     registration_form = main_page.open_registration_form()
     registration_form.register_invalid_user(name, last_name, email, password, repeat_password)
-
     assert registration_form.is_error_visible(expected_error)
