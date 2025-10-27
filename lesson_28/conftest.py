@@ -1,11 +1,13 @@
 import pytest
 from selenium.webdriver import Chrome
 from PythonAutomation.lesson_28.main_page import MainPage
+from selenium import webdriver
+chrome_options = webdriver.ChromeOptions()
 
 
 @pytest.fixture
 def driver():
-    driver = Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     yield driver
     driver.close()
 
