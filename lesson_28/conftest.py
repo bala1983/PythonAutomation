@@ -1,15 +1,20 @@
 import pytest
-from selenium.webdriver import Chrome
-from PythonAutomation.lesson_28.main_page import MainPage
 from selenium import webdriver
-chrome_options = webdriver.ChromeOptions()
+from selenium.webdriver.chrome.options import Options
+from PythonAutomation.lesson_28.main_page import MainPage
 
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome(options=chrome_options)
+    options = Options()
+    options.add_argument("--headless=new")  # обов’язково для Jenkins
+    options.add_argument("--no-sandbox")  # потрібне у контейнерах
+    options.add_argument("--disable-dev-shm-usage")  # запобігає падінням у Linux
+    options.add_argument("--window-size=1920,1080")
+
+    driver = webdriver.Chrome(options=options)
     yield driver
-    driver.close()
+    driver.quit()
 
 @pytest.fixture
 def main_page(driver):
