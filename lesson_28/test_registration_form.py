@@ -2,22 +2,22 @@ from faker import Faker
 import pytest
 import allure
 
+@pytest.mark.l28
 @allure.feature("Позитивний сценарій реєстрації")
 @allure.title("Реєстрація валідного користувача")
 @allure.description("Перевіряє, що користувач може успішно зареєструватися з коректними даними.")
-@pytest.mark.l28
-def test_happy_pass_registration(driver, main_page):
+def test_happy_pass_registration(driver, main_page_fixture):
     user_faker = Faker()
 
-    registration_form = main_page.open_registration_form()
+    registration_form = main_page_fixture.open_registration_form()
     garage_page = registration_form.register_valid_user(user_faker.first_name(), user_faker.last_name(), user_faker.email(),
                                           user_faker.password())
     assert garage_page.is_garage_page_visible()
 
+@pytest.mark.l28
 @allure.feature("Негативні сценарії реєстрації")
 @allure.title("Валідація помилкових даних під час реєстрації")
 @allure.description("Перевіряє, що при введенні некоректних даних відображається правильне повідомлення про помилку.")
-@pytest.mark.l28
 @pytest.mark.parametrize(
     "name, last_name, email, password, repeat_password, expected_error",
     [
@@ -37,7 +37,7 @@ def test_happy_pass_registration(driver, main_page):
         ("Alex", "Tester", "valid@mail.com", "Qwerty123!", "q", "Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter")
     ]
 )
-def test_registration_invalid_user(driver, main_page, name, last_name, email, password, repeat_password, expected_error):
-    registration_form = main_page.open_registration_form()
+def test_registration_invalid_user(driver, main_page_fixture, name, last_name, email, password, repeat_password, expected_error):
+    registration_form = main_page_fixture.open_registration_form()
     registration_form.register_invalid_user(name, last_name, email, password, repeat_password)
     assert registration_form.is_error_visible(expected_error)

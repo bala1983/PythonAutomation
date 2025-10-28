@@ -2,25 +2,26 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from main_page import MainPage
+from .main_page import MainPage
+from selenium.webdriver.chrome.options import ChromiumOptions
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture
 def driver():
-    options = Options()
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--window-size=1920,1080")
-
-    service = Service()
-
-    driver = webdriver.Chrome(service=service, options=options)
+    chrome_options = ChromiumOptions()
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options=chrome_options, service=service)
     yield driver
-    driver.quit()
+    driver.close()
 
 @pytest.fixture
-def main_page(driver):
+def main_page_fixture(driver):
     main_page = MainPage(driver)
     main_page.open_page()
     return main_page

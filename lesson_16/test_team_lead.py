@@ -1,6 +1,5 @@
 import pytest
-
-from PythonAutomation.lesson_16.homework_16 import TeamLead
+from .homework_16 import TeamLead
 
 class TestTeamLeadPositeve:
     def test_attributes(self):

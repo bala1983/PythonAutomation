@@ -4,7 +4,7 @@ import sys
 import pathlib
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent))
-from PythonAutomation.lesson_09.homework_09_def import (total_area, filter_cars, car_data, car_data_negative,
+from homework_09_def import (total_area, filter_cars, car_data, car_data_negative,
                                                         sum_all_numbers)
 
 class CarTest(unittest.TestCase):

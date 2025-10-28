@@ -1,6 +1,5 @@
 import pytest
-
-from PythonAutomation.dop_lesson.def_change_letters import change_letter
+from .def_change_letters import change_letter
 
 # @pytest.mark.positive
 # class TestChangeLettersPositive:

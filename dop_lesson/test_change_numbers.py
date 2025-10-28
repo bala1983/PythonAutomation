@@ -1,7 +1,5 @@
 import pytest
-
-
-from PythonAutomation.dop_lesson.def_change_numbers import first_or_last_bigger
+from .def_change_numbers import first_or_last_bigger
 
 class TestChangeNumbersPositive:
 

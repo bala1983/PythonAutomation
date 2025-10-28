@@ -1,9 +1,9 @@
 import random
 from sqlalchemy import create_engine
-from courses import Course
-from declarative_base import Base
+from .courses import Course
+from .declarative_base import Base
 from sqlalchemy.orm import sessionmaker
-from students import Student
+from .students import Student
 
 def init_db():
     engine = create_engine("postgresql://test_user:test_password@localhost:5432/test_db")

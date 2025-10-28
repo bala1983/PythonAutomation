@@ -1,5 +1,5 @@
-from base_page import BasePage
-from registration_form import RegistrationForm
+from .base_page import BasePage
+from .registration_form import RegistrationForm
 from ..settings import settings
 from selenium.webdriver.common.by import By
 
