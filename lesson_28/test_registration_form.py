@@ -5,7 +5,7 @@ import allure
 @allure.feature("Позитивний сценарій реєстрації")
 @allure.title("Реєстрація валідного користувача")
 @allure.description("Перевіряє, що користувач може успішно зареєструватися з коректними даними.")
-@pytest.mark.positive
+@pytest.mark.l28
 def test_happy_pass_registration(driver, main_page):
     user_faker = Faker()
 
@@ -17,7 +17,7 @@ def test_happy_pass_registration(driver, main_page):
 @allure.feature("Негативні сценарії реєстрації")
 @allure.title("Валідація помилкових даних під час реєстрації")
 @allure.description("Перевіряє, що при введенні некоректних даних відображається правильне повідомлення про помилку.")
-@pytest.mark.negative
+@pytest.mark.l28
 @pytest.mark.parametrize(
     "name, last_name, email, password, repeat_password, expected_error",
     [
