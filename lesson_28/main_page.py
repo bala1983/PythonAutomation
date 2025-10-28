@@ -1,6 +1,6 @@
-from PythonAutomation.lesson_28.base_page import BasePage
-from PythonAutomation.lesson_28.registration_form import RegistrationForm
-from PythonAutomation.settings import settings
+from base_page import BasePage
+from registration_form import RegistrationForm
+from ..settings import settings
 from selenium.webdriver.common.by import By
 
 class MainPage(BasePage):
