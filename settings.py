@@ -1,6 +1,6 @@
 from dynaconf import Dynaconf
 from os.path import join
-from PythonAutomation.constants import BASE_PATH
+from .constants import BASE_PATH
 
 
 settings = Dynaconf(
