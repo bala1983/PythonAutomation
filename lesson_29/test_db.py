@@ -8,4 +8,3 @@ def test_db_select():
     default_values()
     actual_result = show_student_by_name('Student 5')
     assert actual_result == expected_result
-
